@@ -35,7 +35,7 @@ module.exports = {
         username: 'FakeUser5',
         hashedPassword: bcrypt.hashSync(faker.internet.password()),
       },
-    ], {});
+    ]);
   },
 
   down: (queryInterface, Sequelize) => {

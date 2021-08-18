@@ -58,7 +58,7 @@ module.exports = {
       name: 'Woodburn Mansion',
       price: faker.pricetag()
       },
-    ], {});
+    ]);
   },
 
   down: (queryInterface, Sequelize) => {

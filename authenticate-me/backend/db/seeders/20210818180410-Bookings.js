@@ -33,7 +33,7 @@ module.exports = {
       startDate: new Date(),
       endDate: new Date()
       },
-    ], {});
+    ]);
   },
 
   down: (queryInterface, Sequelize) => {

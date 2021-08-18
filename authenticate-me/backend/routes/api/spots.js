@@ -7,7 +7,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 const { Spot } = require('../../db/models')
 
 router.get('/', asyncHandler, async (req, res) => {
-    return await Spot.findAll({
+    await Spot.findAll({
         where: Spot.city
     })
 })
