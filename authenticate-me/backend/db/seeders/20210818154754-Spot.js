@@ -6,57 +6,69 @@ module.exports = {
     return queryInterface.bulkInsert('Spots', [
       {
       userId: 2,
-      address: faker.street_adress(),
-      city: faker.city(),
-      state: faker.state(),
-      country: faker.country(),
+      address: faker.address.streetAddress(),
+      city: faker.address.city(),
+      state: faker.address.state(),
+      country: faker.address.country(),
       name: 'LaLaurie Mansion',
-      price: faker.pricetag()
+      price: faker.commerce.price(),
+      createdAt: new Date(),
+      updatedAt: new Date()
       },
       {
       userId: 3,
-      address: faker.street_adress(),
-      city: faker.city(),
-      state: faker.state(),
-      country: faker.country(),
+      address: faker.address.streetAddress(),
+      city: faker.address.city(),
+      state: faker.address.state(),
+      country: faker.address.country(),
       name: 'The Begich Towers',
-      price: faker.pricetag()
+      price: faker.commerce.price(),
+      createdAt: new Date(),
+      updatedAt: new Date()
       },
       {
       userId: 4,
-      address: faker.street_adress(),
-      city: faker.city(),
-      state: faker.state(),
-      country: faker.country(),
+      address: faker.address.streetAddress(),
+      city: faker.address.city(),
+      state: faker.address.state(),
+      country: faker.address.country(),
       name: ' The Rosson House',
-      price: faker.pricetag()
+      price: faker.commerce.price(),
+      createdAt: new Date(),
+      updatedAt: new Date()
       },
       {
       userId: 5,
-      address: faker.street_adress(),
-      city: faker.city(),
-      state: faker.state(),
-      country: faker.country(),
+      address: faker.address.streetAddress(),
+      city: faker.address.city(),
+      state: faker.address.state(),
+      country: faker.address.country(),
       name: 'Peel Mansion',
-      price: faker.pricetag()
+      price: faker.commerce.price(),
+      createdAt: new Date(),
+      updatedAt: new Date()
       },
       {
       userId: 3,
-      address: faker.street_adress(),
-      city: faker.city(),
-      state: faker.state(),
-      country: faker.country(),
+      address: faker.address.streetAddress(),
+      city: faker.address.city(),
+      state: faker.address.state(),
+      country: faker.address.country(),
       name: 'Whaley House',
-      price: faker.pricetag()
+      price: faker.commerce.price(),
+      createdAt: new Date(),
+      updatedAt: new Date()
       },
       {
       userId: 2,
-      address: faker.street_adress(),
-      city: faker.city(),
-      state: faker.state(),
-      country: faker.country(),
+      address: faker.address.streetAddress(),
+      city: faker.address.city(),
+      state: faker.address.state(),
+      country: faker.address.country(),
       name: 'Woodburn Mansion',
-      price: faker.pricetag()
+      price: faker.commerce.price(),
+      createdAt: new Date(),
+      updatedAt: new Date()
       },
     ]);
   },
