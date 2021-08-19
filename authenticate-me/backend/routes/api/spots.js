@@ -12,9 +12,9 @@ router.get('/', asyncHandler (async (req, res) => {
     let spots = await Spot.findAll()
     return res.json({spots})
 }))
-
+//post a new spot
 router.post('/', requireAuth, asyncHandler(async (req, res) => {
-    const {id: userId} = req.user
+    const { id: userId } = req.user
     const { address, city, state, country, name, price } = req.body
     const newSpot = await Spot.create({userId, address, city, state, country,name, price})
     return res.redirect(`/spots/${newSpot.id}`)
@@ -25,17 +25,30 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     let spot = await Spot.findByPk(spotId)
     return res.json({spot})
 }))
-
+//update a spot 
 router.post('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
     let spotId = req.params.id
     let oldSpot = await Spot.findByPk(spotId)
-    const userId = spot.userId
+    const userId = oldSpot.userId
     const { address, city, state, country, name, price } = req.body
     const spot = { spotId, userId, address, city, state, country, name, price }
     
     const validatorErrors = validationResult(req)
     if (validatorErrors.isEmpty()) {
-        
+        if (userId === req.user.id) {
+            return await oldSpot.update(spot)
+        }
+    } else {
+        const errors = validatorErrors.array().map((error) => error.msg);
+        return res.json(errors)
+    }
+}))
+
+router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
+    const spot = await Spot.findByPk(req.params.id)
+    const userId = spot.userId
+    if (userId === req.user.id) {
+        return await spot.destroy()
     }
 }))
 
