@@ -14,10 +14,10 @@ router.get('/', asyncHandler (async (req, res) => {
 }))
 //post a new spot
 router.post('/', requireAuth, asyncHandler(async (req, res) => {
-    const { id: userId } = req.user
-    const { address, city, state, country, name, price } = req.body
-    const newSpot = await Spot.create({userId, address, city, state, country,name, price})
-    return res.redirect(`/spots/${newSpot.id}`)
+    
+    const { userId, address, city, state, country, name, price } = req.body
+    const newSpot = await Spot.create(req.body)
+    return res.json({newSpot})
 }))
 
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
