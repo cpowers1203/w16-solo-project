@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler');
 const { check, validationResult } = require('express-validator')
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { handleValidationErrors } = require('../../utils/validation');
-const { Spot } = require('../../db/models');
+const { Spot, Image } = require('../../db/models');
 const { ResultWithContext } = require('express-validator/src/chain');
 
 
@@ -22,8 +22,8 @@ router.post('/', requireAuth, asyncHandler(async (req, res) => {
 
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     let spotId = req.params.id
-    let spot = await Spot.findByPk(spotId)
-    return res.json({spot})
+    let spot = await Spot.findByPk(spotId, {include: Image})
+    return res.json(spot)
 }))
 //update a spot 
 router.post('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
