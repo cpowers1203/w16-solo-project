@@ -52,4 +52,15 @@ router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
     }
 }))
 
+router.post('/:id(\\d+)/images', requireAuth, asyncHandler(async (req, res) => {
+    const spot = await Spot.findByPk(req.params.id)
+    spotId = spot.id
+    const userId = spot.userId
+    const {spotId, url} = req.body
+    if (userId === req.user.id) {
+        const newImage = await Image.create(req.body)
+        return res.json({newImage})
+    }
+}))
+
 module.exports = router
